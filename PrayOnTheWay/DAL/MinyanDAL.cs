@@ -19,12 +19,9 @@ namespace DAL
                 {
                     db.SaveChanges();
                     return true;
-
-
                 }
                 catch (Exception )
                 {
-
                     throw;
                 }
             }
