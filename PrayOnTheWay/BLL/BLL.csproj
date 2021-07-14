@@ -48,7 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="PrayerBll.cs" />
+    <Compile Include="Converts\AskMinyanConvert.cs" />
+    <Compile Include="Converts\AsksToMinyanConvert.cs" />
+    <Compile Include="Converts\MinyanConvert.cs" />
+    <Compile Include="Converts\PrayerConvert.cs" />
+    <Compile Include="Converts\SafePointOnTheWayConvert.cs" />
+    <Compile Include="Converts\TimeAtTheDayConvert.cs" />
     <Compile Include="MinyanBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,14 +63,15 @@
       <Project>{f7810a70-0aed-4c24-a667-d55e0ce0e308}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{a21a47c4-45fe-4087-91e8-b796c4f6db82}</Project>
-      <Name>Models</Name>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{1599c8ff-4b60-4497-8ad6-d4851a2699ff}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

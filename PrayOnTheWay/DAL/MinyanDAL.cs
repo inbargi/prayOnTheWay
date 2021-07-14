@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
 
 namespace DAL
 {
@@ -12,12 +11,12 @@ namespace DAL
 
         public bool AddMinyan(Minyan minyan)
         {
-            using (PrayOnTheWayEntities db=new PrayOnTheWayEntities())
+            using (PrayOnTheWayEntities DB=new PrayOnTheWayEntities())
             {
-                db.Minyans.Add(minyan);
+                DB.Minyans.Add(minyan);
                 try
                 {
-                    db.SaveChanges();
+                    DB.SaveChanges();
                     return true;
                 }
                 catch (Exception )
@@ -25,6 +24,48 @@ namespace DAL
                     throw;
                 }
             }
+       
+        }
+        public List<Minyan> GetMinyans()
+        {
+            using (PrayOnTheWayEntities DB = new PrayOnTheWayEntities())
+            {
+              return  DB.Minyans.ToList();
+            }
+        }
+        public bool UpdateMinyan(Minyan minyan)
+        {
+            using(PrayOnTheWayEntities DB = new PrayOnTheWayEntities())
+            {
+                DB.Entry(minyan);
+                try
+                {
+                    DB.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+      
+        }
+        public bool RemoveMinyan(Minyan minyan)
+        {
+            using(PrayOnTheWayEntities DB = new PrayOnTheWayEntities())
+            {
+                DB.Minyans.Remove(minyan);
+                try
+                { 
+                    DB.SaveChanges(); 
+                    return true;
+                }
+                catch(Exception)
+                {
+                    throw;
+                }
+            }
+           
         }
     }
 }

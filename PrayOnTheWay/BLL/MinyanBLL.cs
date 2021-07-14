@@ -4,17 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-using Models;
+using DTO;
 
 namespace BLL
 {
     public class MinyanBLL
     {
         MinyanDAL minyanDAL = new MinyanDAL();
-        public bool AddMinyan(Minyan minyan)
+        public bool AddMinyan(MinyanDTO minyan)
         {
-            return minyanDAL.AddMinyan(minyan);
 
+            return minyanDAL.AddMinyan(Converts.MinyanConvert.ConvertDTOToDAL(minyan));
+        }
+        public List<MinyanDTO> GetMinyans()
+        {
+            return Converts.MinyanConvert.ConvertDALToDTOList(minyanDAL.GetMinyans());
+        }
+        public bool UpdateMinyan(MinyanDTO minyan)
+        {
+            return minyanDAL.UpdateMinyan(Converts.MinyanConvert.ConvertDTOToDAL(minyan));
+        }
+        public bool RemoveMinyan(MinyanDTO minyan)
+        {
+            return minyanDAL.RemoveMinyan(Converts.MinyanConvert.ConvertDTOToDAL(minyan));
         }
     }
 }
