@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DAL;
 using DTO;
 
-
 namespace BLL.Converts
 {
     public class AskMinyanConvert
@@ -16,13 +15,12 @@ namespace BLL.Converts
             return new AskMinyanDTO
             {
                 IdAskMinyan = askMinyan.IdAskMinyan,
-                IdPrayer = askMinyan.IdPrayer,
-                Lat = askMinyan.Lat,
-                Lng = askMinyan.Lng,
-                AskTime = askMinyan.AskTime,
-                Prayer = PrayerConvert.ConvertDALToDTO(askMinyan.Prayer),
-                AsksToMinyans = AsksToMinyanConvert.ConvertDALToDTOList(askMinyan.AsksToMinyans)
-
+                AskTime=askMinyan.AskTime,
+                IdPrayer=askMinyan.IdPrayer,
+                Prayer=PrayerConvert.ConvertDALToDTO(askMinyan.Prayer),
+                Lat=askMinyan.Lat,
+                Lng=askMinyan.Lng,
+                AsksToMinyans=AsksToMinyanConvert.ConvertDALToDTOList(askMinyan.AsksToMinyans)
             };
         }
         public static AskMinyan ConvertDTOToDAL(AskMinyanDTO askMinyanDTO)
@@ -30,21 +28,24 @@ namespace BLL.Converts
             return new AskMinyan
             {
                 IdAskMinyan = askMinyanDTO.IdAskMinyan,
+                AskTime = askMinyanDTO.AskTime,
                 IdPrayer = askMinyanDTO.IdPrayer,
+                Prayer = PrayerConvert.ConvertDTOToDAL(askMinyanDTO.Prayer),
                 Lat = askMinyanDTO.Lat,
                 Lng = askMinyanDTO.Lng,
-                AskTime = askMinyanDTO.AskTime,
-                Prayer = PrayerConvert.ConvertDTOToDAL(askMinyanDTO.Prayer),
                 AsksToMinyans = AsksToMinyanConvert.ConvertDTOToDALList(askMinyanDTO.AsksToMinyans)
             };
         }
-        public static List<AskMinyanDTO> ConvertDALToDTOList(ICollection<AskMinyan> askMinyans)
+
+        public static List<AskMinyanDTO> ConvertDALToDTOList(ICollection<AskMinyan> askToMinyans)
         {
-            return askMinyans.Select(a => ConvertDALToDTO(a)).ToList();
+            return askToMinyans.Select(a => ConvertDALToDTO(a)).ToList();
         }
-        public static ICollection<AskMinyan> ConvertDTOToDALList(List<AskMinyanDTO> askMinyans)
+        public static ICollection<AskMinyan> ConvertDTOToDALList(List<AskMinyanDTO> askToMinyans)
         {
-            return askMinyans.Select(a => ConvertDTOToDAL(a)).ToList();
+            return askToMinyans.Select(a => ConvertDTOToDAL(a)).ToList();
+
+
         }
     }
 }

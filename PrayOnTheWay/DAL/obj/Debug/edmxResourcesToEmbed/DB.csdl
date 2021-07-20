@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrayOnTheWayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AskMinyan">
+    <Key>
+      <PropertyRef Name="IdAskMinyan" />
+    </Key>
+    <Property Name="IdAskMinyan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lat" Type="Double" Nullable="false" />
+    <Property Name="Lng" Type="Double" Nullable="false" />
+    <Property Name="IdPrayer" Type="Int64" Nullable="false" />
+    <Property Name="AskTime" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Prayer" Relationship="Self.FK__AskMinyan__IdPra__2B3F6F97" FromRole="AskMinyan" ToRole="Prayers" />
+    <NavigationProperty Name="AsksToMinyans" Relationship="Self.FK__AsksToMin__IdAsk__30F848ED" FromRole="AskMinyan" ToRole="AsksToMinyan" />
+  </EntityType>
+  <EntityType Name="AsksToMinyan">
+    <Key>
+      <PropertyRef Name="IdAsksToMinyan" />
+    </Key>
+    <Property Name="IdAsksToMinyan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAskMinyan" Type="Int64" Nullable="false" />
+    <Property Name="IdMinyan" Type="Int64" Nullable="false" />
+    <Property Name="IsComming" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AskMinyan" Relationship="Self.FK__AsksToMin__IdAsk__30F848ED" FromRole="AsksToMinyan" ToRole="AskMinyan" />
+    <NavigationProperty Name="Minyan" Relationship="PrayOnTheWayModel.FK__AsksToMin__IdMin__31EC6D26" FromRole="AsksToMinyan" ToRole="Minyan" />
+  </EntityType>
+  <EntityType Name="Prayer">
+    <Key>
+      <PropertyRef Name="IdPrayer" />
+    </Key>
+    <Property Name="IdPrayer" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePrayer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdTime" Type="Int64" Nullable="false" />
+    <Property Name="LastTimeToday" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="AskMinyans" Relationship="Self.FK__AskMinyan__IdPra__2B3F6F97" FromRole="Prayers" ToRole="AskMinyan" />
+    <NavigationProperty Name="TimeAtTheDay" Relationship="Self.FK__Prayers__IdTime__2E1BDC42" FromRole="Prayers" ToRole="TimeAtTheDay" />
+    <NavigationProperty Name="Minyans" Relationship="PrayOnTheWayModel.FK__Minyan__IdPrayer__2C3393D0" FromRole="Prayer" ToRole="Minyan" />
+  </EntityType>
+  <EntityType Name="SafePointOnTheWay">
+    <Key>
+      <PropertyRef Name="IdlocationMinyan" />
+    </Key>
+    <Property Name="IdlocationMinyan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lat" Type="Double" Nullable="false" />
+    <Property Name="Lng" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Minyans" Relationship="PrayOnTheWayModel.FK__Minyan__Idlocati__2D27B809" FromRole="SafePointOnTheWay" ToRole="Minyan" />
+  </EntityType>
+  <EntityType Name="TimeAtTheDay">
+    <Key>
+      <PropertyRef Name="IdTime" />
+    </Key>
+    <Property Name="IdTime" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descreption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prayers" Relationship="Self.FK__Prayers__IdTime__2E1BDC42" FromRole="TimeAtTheDay" ToRole="Prayers" />
+  </EntityType>
+  <Association Name="FK__AskMinyan__IdPra__2B3F6F97">
+    <End Role="Prayers" Type="Self.Prayer" Multiplicity="1" />
+    <End Role="AskMinyan" Type="Self.AskMinyan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prayers">
+        <PropertyRef Name="IdPrayer" />
+      </Principal>
+      <Dependent Role="AskMinyan">
+        <PropertyRef Name="IdPrayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsksToMin__IdAsk__30F848ED">
+    <End Role="AskMinyan" Type="Self.AskMinyan" Multiplicity="1" />
+    <End Role="AsksToMinyan" Type="Self.AsksToMinyan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AskMinyan">
+        <PropertyRef Name="IdAskMinyan" />
+      </Principal>
+      <Dependent Role="AsksToMinyan">
+        <PropertyRef Name="IdAskMinyan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prayers__IdTime__2E1BDC42">
+    <End Role="TimeAtTheDay" Type="Self.TimeAtTheDay" Multiplicity="1" />
+    <End Role="Prayers" Type="Self.Prayer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeAtTheDay">
+        <PropertyRef Name="IdTime" />
+      </Principal>
+      <Dependent Role="Prayers">
+        <PropertyRef Name="IdTime" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrayOnTheWayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AskMinyans" EntityType="Self.AskMinyan" />
+    <EntitySet Name="AsksToMinyans" EntityType="Self.AsksToMinyan" />
+    <EntitySet Name="Prayers" EntityType="Self.Prayer" />
+    <EntitySet Name="SafePointOnTheWays" EntityType="Self.SafePointOnTheWay" />
+    <EntitySet Name="TimeAtTheDays" EntityType="Self.TimeAtTheDay" />
+    <AssociationSet Name="FK__AskMinyan__IdPra__2B3F6F97" Association="Self.FK__AskMinyan__IdPra__2B3F6F97">
+      <End Role="Prayers" EntitySet="Prayers" />
+      <End Role="AskMinyan" EntitySet="AskMinyans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsksToMin__IdAsk__30F848ED" Association="Self.FK__AsksToMin__IdAsk__30F848ED">
+      <End Role="AskMinyan" EntitySet="AskMinyans" />
+      <End Role="AsksToMinyan" EntitySet="AsksToMinyans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prayers__IdTime__2E1BDC42" Association="Self.FK__Prayers__IdTime__2E1BDC42">
+      <End Role="TimeAtTheDay" EntitySet="TimeAtTheDays" />
+      <End Role="Prayers" EntitySet="Prayers" />
+    </AssociationSet>
+    <EntitySet Name="Minyans" EntityType="PrayOnTheWayModel.Minyan" />
+    <AssociationSet Name="FK__AsksToMin__IdMin__31EC6D26" Association="PrayOnTheWayModel.FK__AsksToMin__IdMin__31EC6D26">
+      <End Role="Minyan" EntitySet="Minyans" />
+      <End Role="AsksToMinyan" EntitySet="AsksToMinyans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Minyan__Idlocati__2D27B809" Association="PrayOnTheWayModel.FK__Minyan__Idlocati__2D27B809">
+      <End Role="SafePointOnTheWay" EntitySet="SafePointOnTheWays" />
+      <End Role="Minyan" EntitySet="Minyans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Minyan__IdPrayer__2C3393D0" Association="PrayOnTheWayModel.FK__Minyan__IdPrayer__2C3393D0">
+      <End Role="Prayer" EntitySet="Prayers" />
+      <End Role="Minyan" EntitySet="Minyans" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Minyan">
+    <Key>
+      <PropertyRef Name="IdMinyan" />
+    </Key>
+    <Property Name="IdMinyan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPrayer" Type="Int64" Nullable="false" />
+    <Property Name="DateMinyan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BeginningTimeMinyan" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IdlocationMinyan" Type="Int64" Nullable="false" />
+    <Property Name="NumOfPeopleInMinyan" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AsksToMinyans" Relationship="PrayOnTheWayModel.FK__AsksToMin__IdMin__31EC6D26" FromRole="Minyan" ToRole="AsksToMinyan" />
+    <NavigationProperty Name="SafePointOnTheWay" Relationship="PrayOnTheWayModel.FK__Minyan__Idlocati__2D27B809" FromRole="Minyan" ToRole="SafePointOnTheWay" />
+    <NavigationProperty Name="Prayer" Relationship="PrayOnTheWayModel.FK__Minyan__IdPrayer__2C3393D0" FromRole="Minyan" ToRole="Prayer" />
+  </EntityType>
+  <Association Name="FK__AsksToMin__IdMin__31EC6D26">
+    <End Type="PrayOnTheWayModel.Minyan" Role="Minyan" Multiplicity="1" />
+    <End Type="PrayOnTheWayModel.AsksToMinyan" Role="AsksToMinyan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Minyan">
+        <PropertyRef Name="IdMinyan" />
+      </Principal>
+      <Dependent Role="AsksToMinyan">
+        <PropertyRef Name="IdMinyan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Minyan__Idlocati__2D27B809">
+    <End Type="PrayOnTheWayModel.SafePointOnTheWay" Role="SafePointOnTheWay" Multiplicity="1" />
+    <End Type="PrayOnTheWayModel.Minyan" Role="Minyan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafePointOnTheWay">
+        <PropertyRef Name="IdlocationMinyan" />
+      </Principal>
+      <Dependent Role="Minyan">
+        <PropertyRef Name="IdlocationMinyan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Minyan__IdPrayer__2C3393D0">
+    <End Type="PrayOnTheWayModel.Prayer" Role="Prayer" Multiplicity="1" />
+    <End Type="PrayOnTheWayModel.Minyan" Role="Minyan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prayer">
+        <PropertyRef Name="IdPrayer" />
+      </Principal>
+      <Dependent Role="Minyan">
+        <PropertyRef Name="IdPrayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

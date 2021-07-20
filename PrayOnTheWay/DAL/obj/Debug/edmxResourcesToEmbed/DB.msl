@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrayOnTheWayModelStoreContainer" CdmEntityContainer="PrayOnTheWayEntities">
+    <EntitySetMapping Name="AskMinyans">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.AskMinyan">
+        <MappingFragment StoreEntitySet="AskMinyan">
+          <ScalarProperty Name="IdAskMinyan" ColumnName="IdAskMinyan" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="IdPrayer" ColumnName="IdPrayer" />
+          <ScalarProperty Name="AskTime" ColumnName="AskTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsksToMinyans">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.AsksToMinyan">
+        <MappingFragment StoreEntitySet="AsksToMinyan">
+          <ScalarProperty Name="IdAsksToMinyan" ColumnName="IdAsksToMinyan" />
+          <ScalarProperty Name="IdAskMinyan" ColumnName="IdAskMinyan" />
+          <ScalarProperty Name="IdMinyan" ColumnName="IdMinyan" />
+          <ScalarProperty Name="IsComming" ColumnName="IsComming" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prayers">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.Prayer">
+        <MappingFragment StoreEntitySet="Prayers">
+          <ScalarProperty Name="IdPrayer" ColumnName="IdPrayer" />
+          <ScalarProperty Name="NamePrayer" ColumnName="NamePrayer" />
+          <ScalarProperty Name="IdTime" ColumnName="IdTime" />
+          <ScalarProperty Name="LastTimeToday" ColumnName="LastTimeToday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SafePointOnTheWays">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.SafePointOnTheWay">
+        <MappingFragment StoreEntitySet="SafePointOnTheWay">
+          <ScalarProperty Name="IdlocationMinyan" ColumnName="IdlocationMinyan" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeAtTheDays">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.TimeAtTheDay">
+        <MappingFragment StoreEntitySet="TimeAtTheDay">
+          <ScalarProperty Name="IdTime" ColumnName="IdTime" />
+          <ScalarProperty Name="Descreption" ColumnName="Descreption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Minyans">
+      <EntityTypeMapping TypeName="PrayOnTheWayModel.Minyan">
+        <MappingFragment StoreEntitySet="Minyan">
+          <ScalarProperty Name="NumOfPeopleInMinyan" ColumnName="NumOfPeopleInMinyan" />
+          <ScalarProperty Name="IdlocationMinyan" ColumnName="IdlocationMinyan" />
+          <ScalarProperty Name="BeginningTimeMinyan" ColumnName="BeginningTimeMinyan" />
+          <ScalarProperty Name="DateMinyan" ColumnName="DateMinyan" />
+          <ScalarProperty Name="IdPrayer" ColumnName="IdPrayer" />
+          <ScalarProperty Name="IdMinyan" ColumnName="IdMinyan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

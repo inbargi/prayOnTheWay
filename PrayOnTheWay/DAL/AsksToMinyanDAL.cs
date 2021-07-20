@@ -33,7 +33,7 @@ namespace DAL
                 return DB.AsksToMinyans.ToList();
             }
         }
-        public bool UpdateAskToMinyan(AsksToMinyan asksToMinyan)
+        public bool UpdateAsksToMinyan(AsksToMinyan asksToMinyan)
         {
             using (PrayOnTheWayEntities DB = new PrayOnTheWayEntities())
             {

@@ -1,0 +1,14 @@
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\DAL.dll.config
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\DAL.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\DAL.pdb
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\DTO.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\EntityFramework.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\DTO.pdb
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\EntityFramework.xml
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\obj\Debug\DAL.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DAL\obj\Debug\DAL.pdb

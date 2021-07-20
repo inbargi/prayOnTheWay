@@ -1,0 +1,6 @@
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\bin\Debug\DTO.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\bin\Debug\DTO.pdb
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\obj\Debug\DTO.dll
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\obj\Debug\DTO.pdb
+D:\פרויקט גמר\הנחייה\ענבר גייזלר\PrayOnTheWay\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
